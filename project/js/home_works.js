@@ -16,10 +16,70 @@ gmailBtn.onclick = () => {
 
 const child = document.querySelector('.child_block');
 
-  const moveBlock = (px) => {
-    if (px < 450) {
-      child.style.left = px + 'px';
-      requestAnimationFrame(() => moveBlock(px + 1));
+let x = 0,
+    y = 0;
+
+
+const moveBlock = () => {
+    child.style.left = x + "px"
+    child.style.top = y + 'px'
+  if (x<=450 && y<=0) {
+    x++
+    requestAnimationFrame(moveBlock)
+  } else if (x>=450 && y<=450) {
+    y++
+    requestAnimationFrame(moveBlock)
+  }else if (x>=0 && y>=450) {
+    x--
+    requestAnimationFrame(moveBlock)
+  }else if (y>=0 && x<=450) {
+    y--
+    requestAnimationFrame(moveBlock)
+  }
+ 
+  
+};
+
+moveBlock();
+
+
+const timer = document.querySelector('#seconds')
+const btnStart = document.querySelector('#start')
+const btnStop = document.querySelector('#stop')
+const btnRestart = document.querySelector('#reset')
+let num 
+let interval
+let numRes
+
+const countdown = (time) => {
+  if (num === undefined) {
+      num = time
+  }
+  numRes = time
+
+  timer.innerHTML = num
+ 
+  clearInterval(interval)
+  
+  interval = setInterval(() => {
+    num++
+    
+    timer.innerHTML = num
+    
+    if (num <= 0) {
+      clearInterval(interval)
+      interval = null
     }
-  };
- moveBlock(0);
+  }, 100);
+
+};
+
+btnStart.addEventListener('click', () => countdown(0))
+btnStop.addEventListener('click', () => {
+  clearInterval(interval)
+})
+btnRestart.addEventListener('click', () => {
+  clearInterval(interval)
+  num = numRes
+  timer.innerHTML = num
+})
