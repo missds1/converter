@@ -51,4 +51,39 @@ phoneBtn.onclick = () => {
     }
 }
 
+const card = document.querySelector(".card")
+const btnNext = document.querySelector("#btn-next")
+const btnPrev = document.querySelector('#btn-prev')
+let cardIndex = 1
 
+function slide () {
+    fetch(`https://jsonplaceholder.typicode.com/todos/${cardIndex}`)
+    .then((response) => response.json())
+    .then((data) => {
+        const {title, completed, id} = data
+        card.innerHTML = `
+        <p>${title}<p>
+        <p style="color: ${completed ? "green" : "red"}">
+        ${completed}<p>
+        <span>${id}<span>
+        `
+    })
+
+}
+
+btnNext.onclick = () => {
+  cardIndex++
+  if (cardIndex > 200) cardIndex = 1
+  slide()
+}
+
+btnPrev.onclick = () => {
+  cardIndex--
+  if (cardIndex < 1) cardIndex = 200
+  slide()
+}
+slide()
+
+fetch('https://jsonplaceholder.typicode.com/posts')
+.then((response) => response.json())
+.then((data) => console.log(data))
