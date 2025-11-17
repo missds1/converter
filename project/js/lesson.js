@@ -87,3 +87,49 @@ slide()
 fetch('https://jsonplaceholder.typicode.com/posts')
 .then((response) => response.json())
 .then((data) => console.log(data))
+
+
+const tabContentBlocks = document.querySelectorAll(".tab_content_block")
+const tabsParent = document.querySelector(".tab_content_items")
+const tabs = document.querySelectorAll(".tab_content_item")
+let currentIndex = 0
+
+const hideTabContent = () => {
+    tabContentBlocks.forEach((block) => {
+        block.style.display = 'none'
+    })
+    tabs.forEach((tab) => {
+        tab.classList.remove('tab_content_item_active')
+    })
+}
+
+const showTabContent = (blockIndex = 0) => {
+    tabContentBlocks[blockIndex].style.display = 'block'
+    tabs[blockIndex].classList.add('tab_content_item_active')
+}
+
+hideTabContent()
+showTabContent()
+
+tabsParent.onclick = (event) => {
+    if (event.target.classList.contains('tab_content_item'))
+        tabs.forEach((tab, index) => {
+            if (event.target === tab) {
+                hideTabContent()
+                showTabContent(index)
+            }
+            
+    })
+}
+setInterval(() => {
+    currentIndex++
+
+    if (currentIndex >= tabContentBlocks.length) {
+        currentIndex = 0
+    }
+
+    hideTabContent()
+    showTabContent(currentIndex)
+
+}, 3000)
+
