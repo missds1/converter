@@ -1,17 +1,17 @@
 [
   {
-    "name": "",
-    "age": 0,
-    "photo": "url"
+    "name": "Odyssey",
+    "age": 40,
+    "photo": "https://i.pinimg.com/736x/cd/c7/b5/cdc7b5212cf464246983c2596a53a2df.jpg"
   },
   {
-    "name": "",
-    "age": 0,
-    "photo": "url"
+    "name": "Penelope",
+    "age":38,
+    "photo": "https://i.pinimg.com/736x/ee/95/7f/ee957f1db31cb9e9b5350c62edb836a4.jpg"
   },
   {
-    "name": "",
-    "age": 0,
-    "photo": "url"
+    "name": "Telemachus",
+    "age": 21,
+    "photo": "https://i.pinimg.com/736x/8d/93/b4/8d93b44632c106342b72206d9863207d.jpg"
   }
 ]

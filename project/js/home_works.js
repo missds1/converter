@@ -83,3 +83,38 @@ btnRestart.addEventListener('click', () => {
   num = numRes
   timer.innerHTML = num
 })
+
+const characters = document.querySelector('.characters-list')
+const xhr = new XMLHttpRequest()
+xhr.open("GET", "../data/characters.json") 
+xhr.setRequestHeader("Content-type", "application/json")
+xhr.send()
+
+xhr.onload = () => {
+    const data = JSON.parse(xhr.responseText)
+
+    data.forEach((character) => {
+        const card = document.createElement("div")
+        card.classList.add("character-card")
+
+        card.innerHTML = `
+         <div class="character-photo">
+            <img src="${character.photo}" alt="${character.name}">
+          </div>
+            <h3>${character.name}</h3>
+            <h3>age: ${character.age}</h3>
+        `
+
+        characters.appendChild(card)
+    })
+}
+
+
+const bioXhr = new XMLHttpRequest()
+bioXhr.open("GET", "../data/bio.json")
+bioXhr.setRequestHeader("Content-type", "application/json")
+bioXhr.send()
+
+bioXhr.onload = () => {
+    console.log(JSON.parse(bioXhr.responseText))
+}
