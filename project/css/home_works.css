@@ -227,3 +227,28 @@
     height: 100%;
     object-fit: cover;
 }
+
+.cards_block {
+    background: var(--black);
+}
+
+.cardsContainer {
+    padding: 100px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+h5 {
+    color: #fff;
+}
+.card {
+    border: 2px solid var(--orange);
+    padding: 10px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
